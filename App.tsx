@@ -15,12 +15,8 @@ export default function App() {
   // Function to check if all fields are filled
   const areAllFieldsFilled = () => {
     return (
-      firstName !== '' &&
-      lastName !== '' &&
-      email !== '' &&
-      phoneNumber !== '' &&
-      password !== '' &&
-      confirmPassword !== ''
+      firstName !== '' && lastName !== '' && email !== '' &&
+      phoneNumber !== '' && password !== '' && confirmPassword !== ''
     )
   }
 
