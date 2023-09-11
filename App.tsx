@@ -1,12 +1,12 @@
-import React from "react"
-import SignUpScreen from './screens/SignUpScreen'
-import FlatListComponent from "./screens/FlatList"
+import React from 'react';
+import FlatListComponentWithScroll from './screens/FlatListWithScroll';
 
 export default function App() {
   return (
-  <>
-    {/* <SignUpScreen /> */}
-    <FlatListComponent/>
-  </>
-  )
+    <>
+      {/* <SignUpScreen /> */}
+      {/* <FlatListComponent /> */}
+      <FlatListComponentWithScroll />
+    </>
+  );
 }
