@@ -2,8 +2,6 @@ import React, {useState} from 'react'
 import {SafeAreaView, ScrollView, View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
 
 const SignUpScreen = () => {
-    
-    console.log('Rendering SignUpScreen')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
@@ -52,7 +50,6 @@ const SignUpScreen = () => {
                         style={styles.inputStyle}
                         placeholder="First Name"
                         autoCorrect={false}
-                        autoFocus={true}
                         keyboardType="default"
                         onChangeText={(text) => setFirstName(text)}
                         value={firstName}
@@ -64,7 +61,6 @@ const SignUpScreen = () => {
                         style={styles.inputStyle}
                         placeholder="Last Name"
                         autoCorrect={false}
-                        autoFocus={true}
                         keyboardType="default"
                         onChangeText={(text) => setLastName(text)}
                         value={lastName}
@@ -76,7 +72,6 @@ const SignUpScreen = () => {
                         style={styles.inputStyle}
                         placeholder="Email"
                         autoCorrect={false}
-                        autoFocus={true}
                         keyboardType="email-address"
                         onChangeText={(text) => setEmail(text)}
                         value={email}
@@ -88,7 +83,6 @@ const SignUpScreen = () => {
                         style={styles.inputStyle}
                         placeholder="Phone Number"
                         autoCorrect={false}
-                        autoFocus={true}
                         keyboardType="number-pad"
                         onChangeText={(text) => setPhoneNumber(text)}
                         value={phoneNumber}
@@ -101,7 +95,6 @@ const SignUpScreen = () => {
                         placeholder="Password"
                         secureTextEntry
                         autoCorrect={false}
-                        autoFocus={true}
                         keyboardType="default"
                         onChangeText={(text) => setPassword(text)}
                         value={password}
@@ -114,7 +107,6 @@ const SignUpScreen = () => {
                         placeholder="Confirm Password"
                         secureTextEntry
                         autoCorrect={false}
-                        autoFocus={true}
                         keyboardType="default"
                         onChangeText={(text) => setConfirmPassword(text)}
                         value={confirmPassword}
