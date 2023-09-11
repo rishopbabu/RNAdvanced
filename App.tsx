@@ -1,12 +1,12 @@
 import React from 'react';
-import FlatListComponentWithScroll from './screens/FlatListWithScroll';
+import SectionListComponent from './screens/SectionList';
 
 export default function App() {
   return (
     <>
       {/* <SignUpScreen /> */}
       {/* <FlatListComponent /> */}
-      <FlatListComponentWithScroll />
+      <SectionListComponent />
     </>
   );
 }
