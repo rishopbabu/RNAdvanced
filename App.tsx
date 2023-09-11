@@ -12,28 +12,38 @@ export default function App() {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
+  // Function to check if all fields are filled
+  const areAllFieldsFilled = () => {
+    return (
+      firstName !== '' &&
+      lastName !== '' &&
+      email !== '' &&
+      phoneNumber !== '' &&
+      password !== '' &&
+      confirmPassword !== ''
+    )
+  }
+
 
   const submitButtonTapped = () => {
-    
+    if(areAllFieldsFilled()) {
     // Save the data
-    const formData = {
-      firstName,
-      lastName,
-      email,
-      phoneNumber,
-      password,
-      confirmPassword,
-    }
+      const formData = {
+        firstName, lastName, email, phoneNumber, password, confirmPassword,
+      }
 
-    console.log('Form Data:', formData)
+      console.log('Form Data:', formData)
     
-    // Clear the data
-    setFirstName('')
-    setLastName('')
-    setEmail('')
-    setPhoneNumber('')
-    setPassword('')
-    setConfirmPassword('')
+      // Clear the data
+      setFirstName('')
+      setLastName('')
+      setEmail('')
+      setPhoneNumber('')
+      setPassword('')
+      setConfirmPassword('')
+    } else {
+      console.log('Please fill all the fields.')
+    }
   }
 
   return (
@@ -119,6 +129,7 @@ export default function App() {
           <TouchableOpacity
             style={styles.submitButton}
             onPress={submitButtonTapped}
+            disabled={!areAllFieldsFilled()} // Disable if not all fields are filled
           >
             <Text style={styles.submitButtonText}>Submit</Text>
           </TouchableOpacity>
