@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   FlatList,
@@ -6,6 +6,7 @@ import {
   Text,
   StatusBar,
   StyleSheet,
+  Button,
 } from 'react-native';
 
 // Data for FlatList
@@ -111,7 +112,7 @@ const GameList = [
   },
 ];
 
-// const ITEMS_PER_PAGE = 8;
+const ITEMS_PER_PAGE = 8;
 
 type GameListProps = {
   title: string;
@@ -151,36 +152,35 @@ const styles = StyleSheet.create({
 export default function FlatListComponent() {
   console.log('rendering');
 
-  //   const [currentPage, setCurrentPage] = useState(1);
-  //   const totalPageCount = Math.ceil(GameList.length / ITEMS_PER_PAGE);
-  //   const visibleData = GameList.slice(
-  //     (currentPage - 1) * ITEMS_PER_PAGE,
-  //     currentPage * ITEMS_PER_PAGE,
-  //   );
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPageCount = Math.ceil(GameList.length / ITEMS_PER_PAGE);
+  const visibleData = GameList.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE,
+  );
 
-  //   const handleNextPage = () => {
-  //     if (currentPage < totalPageCount) {
-  //       setCurrentPage(currentPage + 1);
-  //     }
-  //   };
+  const handleNextPage = () => {
+    if (currentPage < totalPageCount) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
 
-  //   const handlePrevPage = () => {
-  //     if (currentPage > 1) {
-  //       setCurrentPage(currentPage - 1);
-  //     }
-  //   };
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
         horizontal={false}
-        //data={visibleData}
-        data={GameList}
+        data={visibleData}
         renderItem={({item}) => <ListView title={item.title} />}
         keyExtractor={item => item.id}
         scrollEnabled={true}
       />
-      {/* <View style={styles.pagination}>
+      <View style={styles.pagination}>
         <Button
           title="Previous Page"
           onPress={handlePrevPage}
@@ -192,7 +192,7 @@ export default function FlatListComponent() {
           onPress={handleNextPage}
           disabled={currentPage === totalPageCount}
         />
-      </View> */}
+      </View>
     </SafeAreaView>
   );
 }
