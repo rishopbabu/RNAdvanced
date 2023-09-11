@@ -88,7 +88,7 @@ const GameList = [
 export default function SectionListComponent() {
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle="default" />
       <SectionList
         showsVerticalScrollIndicator={false}
         sections={GameList}

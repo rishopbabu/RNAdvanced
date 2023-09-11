@@ -1,5 +1,6 @@
 import React from 'react';
 import SectionListComponent from './screens/SectionList';
+//import FlatListComponentWithScroll from './screens/FlatListWithScroll';
 
 export default function App() {
   return (
@@ -7,6 +8,7 @@ export default function App() {
       {/* <SignUpScreen /> */}
       {/* <FlatListComponent /> */}
       <SectionListComponent />
+      {/* <FlatListComponentWithScroll /> */}
     </>
   );
 }
