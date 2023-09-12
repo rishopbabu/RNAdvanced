@@ -6,7 +6,9 @@ import {
   SafeAreaView,
   SectionList,
   StatusBar,
+  TouchableOpacity,
 } from 'react-native';
+import {CommonActions, useNavigation} from '@react-navigation/native';
 
 const GameList = [
   {
@@ -85,7 +87,22 @@ const GameList = [
   },
 ];
 
-export default function SectionListComponent() {
+const navigateToFlatList = (navigation: {
+  dispatch: (arg0: CommonActions.Action) => void;
+}) => {
+  navigation.dispatch(
+    CommonActions.navigate({
+      name: 'Game List Flat',
+    }),
+  );
+};
+
+export default function SectionListComponent({}) {
+  const navigation = useNavigation();
+  const handleOnPress = () => {
+    navigateToFlatList(navigation);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="default" />
@@ -102,6 +119,9 @@ export default function SectionListComponent() {
           <Text style={styles.header}>{title}</Text>
         )}
       />
+      <TouchableOpacity style={styles.button} onPress={handleOnPress}>
+        <Text style={styles.buttonTitle}>Go to FlatList Content</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
@@ -128,5 +148,20 @@ const styles = StyleSheet.create({
 
   title: {
     fontSize: 20,
+  },
+
+  button: {
+    backgroundColor: '#007AFF',
+    borderRadius: 5,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    alignItems: 'center',
+    marginBottom: 5,
+  },
+
+  buttonTitle: {
+    color: '#FFF',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
