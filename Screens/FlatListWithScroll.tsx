@@ -8,6 +8,7 @@ import {
   StyleSheet,
   ActivityIndicator,
   ToastAndroid,
+  TouchableOpacity,
 } from 'react-native';
 
 // Data for FlatList
@@ -218,9 +219,28 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 16,
   },
+
+  button: {
+    backgroundColor: '#007AFF',
+    borderRadius: 5,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    alignItems: 'center',
+    marginBottom: 5,
+  },
+
+  buttonTitle: {
+    color: '#FFF',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
 });
 
-export default function FlatListComponentWithScroll() {
+export default function FlatListComponentWithScroll({
+  navigation,
+}: {
+  navigation: any;
+}) {
   console.log('rendering');
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -263,6 +283,21 @@ export default function FlatListComponentWithScroll() {
         // eslint-disable-next-line react/no-unstable-nested-components
         ListFooterComponent={() => <FooterView isLoadingMore={isLoadingMore} />}
       />
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.push('Game List Flat')}>
+        <Text style={styles.buttonTitle}>Go again to FlatList Content</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.goBack()}>
+        <Text style={styles.buttonTitle}>Go Back</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.push('Signup Screen')}>
+        <Text style={styles.buttonTitle}>Go to Login Page</Text>
+      </TouchableOpacity>
       {/* <View style={styles.pagination}>
         <Text>{`Page ${currentPage} of ${totalPageCount}`}</Text>
       </View> */}
