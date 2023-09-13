@@ -298,6 +298,16 @@ export default function FlatListComponentWithScroll({
         onPress={() => navigation.push('Signup Screen')}>
         <Text style={styles.buttonTitle}>Go to Login Page</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() =>
+          navigation.navigate('Detail Screen', {
+            itemId: '01',
+            otherParam: 'hello',
+          })
+        }>
+        <Text style={styles.buttonTitle}>Go to Next Item with Params</Text>
+      </TouchableOpacity>
       {/* <View style={styles.pagination}>
         <Text>{`Page ${currentPage} of ${totalPageCount}`}</Text>
       </View> */}
