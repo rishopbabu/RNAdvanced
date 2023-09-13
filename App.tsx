@@ -17,20 +17,22 @@ export default function App() {
       {/* <FlatListComponentWithScroll /> */}
 
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator
+          screenOptions={{
+            headerTintColor: '#fff',
+            headerStyle: {
+              backgroundColor: '#000',
+            },
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+            headerTitleAlign: 'center',
+          }}>
           <Stack.Screen
             name="Game List Section"
             component={SectionListComponent}
             options={{
               title: 'Game List Section',
-              headerTintColor: '#fff',
-              headerStyle: {
-                backgroundColor: '#000',
-              },
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              },
-              headerTitleAlign: 'center',
             }}
           />
           <Stack.Screen
