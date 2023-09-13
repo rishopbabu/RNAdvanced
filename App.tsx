@@ -21,15 +21,18 @@ export default function App() {
           <Stack.Screen
             name="Game List Section"
             component={SectionListComponent}
+            options={{title: 'Game List Section'}}
           />
           <Stack.Screen
             name="Game List Flat"
             component={FlatListComponentWithScroll}
+            options={{title: 'Game List Flat'}}
           />
           <Stack.Screen name="Signup Screen" component={SignUpScreen} />
           <Stack.Screen
             name="Detail Screen"
             component={GameDetailScreenComponent}
+            options={{title: 'Detail Screen'}}
           />
         </Stack.Navigator>
       </NavigationContainer>

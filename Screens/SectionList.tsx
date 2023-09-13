@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   SectionList,
   StatusBar,
+  ToastAndroid,
   TouchableOpacity,
 } from 'react-native';
 import {CommonActions, useNavigation} from '@react-navigation/native';
@@ -102,6 +103,10 @@ export default function SectionListComponent({}) {
   const handleOnPress = () => {
     navigateToFlatList(navigation);
   };
+  const updateTitle = () => {
+    navigation.setOptions({title: 'Game List'});
+    ToastAndroid.show('Title changed to Game List', ToastAndroid.SHORT);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -121,6 +126,9 @@ export default function SectionListComponent({}) {
       />
       <TouchableOpacity style={styles.button} onPress={handleOnPress}>
         <Text style={styles.buttonTitle}>Go to FlatList Content</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={updateTitle}>
+        <Text style={styles.buttonTitle}>Update title</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
