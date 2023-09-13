@@ -5,6 +5,7 @@ import SignUpScreen from './screens/SignUpScreen';
 import GameDetailScreenComponent from './screens/GameDetailScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {Alert, StyleSheet, Text, TouchableOpacity} from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,7 +22,7 @@ export default function App() {
           screenOptions={{
             headerTintColor: '#fff',
             headerStyle: {
-              backgroundColor: '#000',
+              backgroundColor: 'blue',
             },
             headerTitleStyle: {
               fontWeight: 'bold',
@@ -40,10 +41,13 @@ export default function App() {
             component={FlatListComponentWithScroll}
             options={{
               title: 'Game List Flat',
-              headerTintColor: '#fff',
-              headerStyle: {
-                backgroundColor: '#000',
-              },
+              // eslint-disable-next-line react/no-unstable-nested-components
+              headerRight: () => (
+                <TouchableOpacity
+                  onPress={() => Alert.alert('This is info button')}>
+                  <Text style={styles.infoButtonConatainer}>Info</Text>
+                </TouchableOpacity>
+              ),
             }}
           />
           <Stack.Screen name="Signup Screen" component={SignUpScreen} />
@@ -57,3 +61,11 @@ export default function App() {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  infoButtonConatainer: {
+    flex: 1,
+    color: 'white',
+    marginRight: 10,
+  },
+});
