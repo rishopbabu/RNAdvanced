@@ -21,12 +21,28 @@ export default function App() {
           <Stack.Screen
             name="Game List Section"
             component={SectionListComponent}
-            options={{title: 'Game List Section'}}
+            options={{
+              title: 'Game List Section',
+              headerTintColor: '#fff',
+              headerStyle: {
+                backgroundColor: '#000',
+              },
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+              headerTitleAlign: 'center',
+            }}
           />
           <Stack.Screen
             name="Game List Flat"
             component={FlatListComponentWithScroll}
-            options={{title: 'Game List Flat'}}
+            options={{
+              title: 'Game List Flat',
+              headerTintColor: '#fff',
+              headerStyle: {
+                backgroundColor: '#000',
+              },
+            }}
           />
           <Stack.Screen name="Signup Screen" component={SignUpScreen} />
           <Stack.Screen

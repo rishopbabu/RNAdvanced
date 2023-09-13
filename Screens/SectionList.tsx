@@ -110,7 +110,7 @@ export default function SectionListComponent({}) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="default" />
+      <StatusBar barStyle="light-content" />
       <SectionList
         showsVerticalScrollIndicator={false}
         sections={GameList}
@@ -137,7 +137,7 @@ export default function SectionListComponent({}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: StatusBar.currentHeight,
+    //paddingTop: StatusBar.currentHeight,
     marginHorizontal: 16,
   },
 
