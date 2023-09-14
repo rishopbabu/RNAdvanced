@@ -10,11 +10,13 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Image, StyleSheet} from 'react-native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 // const Stack = createNativeStackNavigator();
 // const Tab = createBottomTabNavigator();
 // const Drawer = createDrawerNavigator();
 const Tab = createMaterialBottomTabNavigator();
+const TopTab = createMaterialTopTabNavigator()
 
 const CustomTabIcon = ({imageSource}: {imageSource: any}) => (
   <Image
@@ -108,75 +110,86 @@ const CustomTabIcon = ({imageSource}: {imageSource: any}) => (
 //   );
 // }
 
-function MaterialTabs() {
+// function MaterialTabs() {
+//   return (
+//     <Tab.Navigator initialRouteName="Home"
+//     activeColor="#f0edf6"
+//     inactiveColor="#3e2465"
+//     barStyle={{ backgroundColor: '#694fad' }}>
+//       <Tab.Screen
+//         name="Game List Sec"
+//         component={SectionListComponent}
+//         options={{
+//           tabBarIcon: ({focused}) => (
+//             <CustomTabIcon
+//               imageSource={
+//                 focused
+//                   ? require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/house.fill.png')
+//                   : require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/house.png')
+//               }
+//             />
+//           ),
+//         }}
+//       />
+//       <Tab.Screen
+//         name="Game List Flat"
+//         component={FlatListComponentWithScroll}
+//         options={{
+//           tabBarIcon: ({focused}) => (
+//             <CustomTabIcon
+//               imageSource={
+//                 focused
+//                   ? require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/gamecontroller.fill.png')
+//                   : require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/gamecontroller.png')
+//               }
+//             />
+//           ),
+//         }}
+//       />
+//       <Tab.Screen
+//         name="Sign Up"
+//         component={SignUpScreen}
+//         options={{
+//           tabBarIcon: ({focused}) => (
+//             <CustomTabIcon
+//               imageSource={
+//                 focused
+//                   ? require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/person.fill.png')
+//                   : require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/person.png')
+//               }
+//             />
+//           ),
+//         }}
+//       />
+//       <Tab.Screen
+//         name="Game Detail"
+//         component={SectionListComponent}
+//         options={{
+//           // eslint-disable-next-line react/no-unstable-nested-components
+//           tabBarIcon: ({focused}) => (
+//             <CustomTabIcon
+//               imageSource={
+//                 focused
+//                   ? require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/paperplane.fill.png')
+//                   : require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/paperplane.png')
+//               }
+//             />
+//           ),
+//         }}
+//       />
+//     </Tab.Navigator>
+//   );
+// }
+
+function TopTabComponent() {
   return (
-    <Tab.Navigator initialRouteName="Home"
-    activeColor="#f0edf6"
-    inactiveColor="#3e2465"
-    barStyle={{ backgroundColor: '#694fad' }}>
-      <Tab.Screen
-        name="Game List Sec"
-        component={SectionListComponent}
-        options={{
-          tabBarIcon: ({focused}) => (
-            <CustomTabIcon
-              imageSource={
-                focused
-                  ? require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/house.fill.png')
-                  : require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/house.png')
-              }
-            />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Game List Flat"
-        component={FlatListComponentWithScroll}
-        options={{
-          tabBarIcon: ({focused}) => (
-            <CustomTabIcon
-              imageSource={
-                focused
-                  ? require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/gamecontroller.fill.png')
-                  : require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/gamecontroller.png')
-              }
-            />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Sign Up"
-        component={SignUpScreen}
-        options={{
-          tabBarIcon: ({focused}) => (
-            <CustomTabIcon
-              imageSource={
-                focused
-                  ? require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/person.fill.png')
-                  : require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/person.png')
-              }
-            />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Game Detail"
-        component={SectionListComponent}
-        options={{
-          // eslint-disable-next-line react/no-unstable-nested-components
-          tabBarIcon: ({focused}) => (
-            <CustomTabIcon
-              imageSource={
-                focused
-                  ? require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/paperplane.fill.png')
-                  : require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/paperplane.png')
-              }
-            />
-          ),
-        }}
-      />
-    </Tab.Navigator>
-  );
+    <TopTab.Navigator>
+      <Tab.Screen name="Sign Up Screen" component={SignUpScreen}/>
+      <Tab.Screen name="Game List Flat" component={FlatListComponentWithScroll} />
+      {/* <Tab.Screen name="Game List" component={GameDetailScreenComponent} /> */}
+      <Tab.Screen name="Game List Section" component={SectionListComponent} />
+    </TopTab.Navigator>
+  )
 }
 
 export default function App() {
@@ -232,7 +245,9 @@ export default function App() {
 
         {/* <DrawerComponent /> */}
 
-        <MaterialTabs />
+        {/* <MaterialTabs /> */}
+
+        <TopTabComponent />
 
       </NavigationContainer>
     </>
