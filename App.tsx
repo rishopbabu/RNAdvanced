@@ -11,13 +11,9 @@ import {Image, StyleSheet} from 'react-native';
 // const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const CustomTabIcon = ({focused}: {focused: any}) => (
+const CustomTabIcon = ({imageSource}: {imageSource: any}) => (
   <Image
-    source={
-      focused
-        ? require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/gamecontroller.fill.png')
-        : require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/gamecontroller.png')
-    }
+    source={imageSource}
     style={styles.imageContainer}
     resizeMode="contain"
   />
@@ -32,15 +28,65 @@ function BottomTabs() {
         component={SectionListComponent}
         options={{
           // eslint-disable-next-line react/no-unstable-nested-components
-          tabBarIcon: ({focused}) => <CustomTabIcon focused={focused} />,
+          tabBarIcon: ({focused}) => (
+            <CustomTabIcon
+              imageSource={
+                focused
+                  ? require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/house.fill.png')
+                  : require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/house.png')
+              }
+            />
+          ),
         }}
       />
       <Tab.Screen
         name="Game List Flat"
         component={FlatListComponentWithScroll}
+        options={{
+          // eslint-disable-next-line react/no-unstable-nested-components
+          tabBarIcon: ({focused}) => (
+            <CustomTabIcon
+              imageSource={
+                focused
+                  ? require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/gamecontroller.fill.png')
+                  : require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/gamecontroller.png')
+              }
+            />
+          ),
+        }}
       />
-      <Tab.Screen name="Sign Up" component={SignUpScreen} />
-      <Tab.Screen name="Game Detail" component={SectionListComponent} />
+      <Tab.Screen
+        name="Sign Up"
+        component={SignUpScreen}
+        options={{
+          // eslint-disable-next-line react/no-unstable-nested-components
+          tabBarIcon: ({focused}) => (
+            <CustomTabIcon
+              imageSource={
+                focused
+                  ? require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/person.fill.png')
+                  : require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/person.png')
+              }
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Game Detail"
+        component={SectionListComponent}
+        options={{
+          // eslint-disable-next-line react/no-unstable-nested-components
+          tabBarIcon: ({focused}) => (
+            <CustomTabIcon
+              imageSource={
+                focused
+                  ? require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/paperplane.fill.png')
+                  : require('/Users/mac-obs-51/Documents/RN Learning/RNAdvanced/assets/paperplane.png')
+              }
+            />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 }

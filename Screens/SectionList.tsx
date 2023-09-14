@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 30,
     fontWeight: 'bold',
-    backgroundColor: 'white',
+    backgroundColor: 'blue',
   },
 
   title: {
