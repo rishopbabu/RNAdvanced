@@ -1,30 +1,77 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, {useEffect} from 'react';
 import SectionListComponent from './screens/SectionList';
 import FlatListComponentWithScroll from './screens/FlatListWithScroll';
 import SignUpScreen from './screens/SignUpScreen';
 import GameDetailScreenComponent from './screens/GameDetailScreen';
 import {NavigationContainer} from '@react-navigation/native';
-// import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Image, StyleSheet} from 'react-native';
+import {Image, StyleSheet, Platform, TouchableOpacity, Text, Alert} from 'react-native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
-// const Stack = createNativeStackNavigator();
+ const Stack = createNativeStackNavigator();
 // const Tab = createBottomTabNavigator();
 // const Drawer = createDrawerNavigator();
-const Tab = createMaterialBottomTabNavigator();
-const TopTab = createMaterialTopTabNavigator()
+// const Tab = createMaterialBottomTabNavigator();
+// const TopTab = createMaterialTopTabNavigator();
 
-const CustomTabIcon = ({imageSource}: {imageSource: any}) => (
-  <Image
-    source={imageSource}
-    style={styles.imageContainer}
-    resizeMode="contain"
-  />
-);
+// const CustomTabIcon = ({imageSource}: {imageSource: any}) => (
+//   <Image
+//     source={imageSource}
+//     style={styles.imageContainer}
+//     resizeMode="contain"
+//   />
+// );
+
+function StackNavigationComponent() {
+  return (
+    <Stack.Navigator
+    screenOptions={{
+      headerTintColor: '#fff',
+      headerStyle: {
+        backgroundColor: 'blue',
+      },
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+      headerTitleAlign: 'center',
+    }}>
+      <Stack.Screen
+        name="Game List Section"
+        component={SectionListComponent}
+        options={{
+          title: 'Game List Section',
+        }}
+      />
+
+      <Stack.Screen
+        name="Game List Flat"
+        component={FlatListComponentWithScroll}
+        options={{
+          title: 'Game List Flat',
+          headerRight: () => (
+            <TouchableOpacity
+              onPress={() => Alert.alert('This is info button')}>
+              <Text style={styles.infoButtonConatainer}>Info</Text>
+            </TouchableOpacity>
+          ),
+        }}
+      />
+
+      <Stack.Screen name="Signup Screen" component={SignUpScreen} />
+    
+      <Stack.Screen
+        name="Detail Screen"
+        component={GameDetailScreenComponent}
+        options={{title: 'Detail Screen'}}
+      />
+  
+    </Stack.Navigator>
+  )
+}
 
 // function BottomTabs() {
 //   return (
@@ -81,7 +128,6 @@ const CustomTabIcon = ({imageSource}: {imageSource: any}) => (
 //         name="Game Detail"
 //         component={SectionListComponent}
 //         options={{
-//           // eslint-disable-next-line react/no-unstable-nested-components
 //           tabBarIcon: ({focused}) => (
 //             <CustomTabIcon
 //               imageSource={
@@ -165,7 +211,6 @@ const CustomTabIcon = ({imageSource}: {imageSource: any}) => (
 //         name="Game Detail"
 //         component={SectionListComponent}
 //         options={{
-//           // eslint-disable-next-line react/no-unstable-nested-components
 //           tabBarIcon: ({focused}) => (
 //             <CustomTabIcon
 //               imageSource={
@@ -181,16 +226,16 @@ const CustomTabIcon = ({imageSource}: {imageSource: any}) => (
 //   );
 // }
 
-function TopTabComponent() {
-  return (
-    <TopTab.Navigator>
-      <Tab.Screen name="Sign Up Screen" component={SignUpScreen}/>
-      <Tab.Screen name="Game List Flat" component={FlatListComponentWithScroll} />
-      {/* <Tab.Screen name="Game List" component={GameDetailScreenComponent} /> */}
-      <Tab.Screen name="Game List Section" component={SectionListComponent} />
-    </TopTab.Navigator>
-  )
-}
+// function TopTabComponent() {
+//   return (
+//     <TopTab.Navigator>
+//       <Tab.Screen name="Sign Up Screen" component={SignUpScreen}/>
+//       <Tab.Screen name="Game List Flat" component={FlatListComponentWithScroll} />
+//       {/* <Tab.Screen name="Game List" component={GameDetailScreenComponent} /> */}
+//       <Tab.Screen name="Game List Section" component={SectionListComponent} />
+//     </TopTab.Navigator>
+//   )
+// }
 
 export default function App() {
   return (
@@ -201,45 +246,8 @@ export default function App() {
       {/* <FlatListComponentWithScroll /> */}
 
       <NavigationContainer>
-        {/* <Stack.Navigator
-          screenOptions={{
-            headerTintColor: '#fff',
-            headerStyle: {
-              backgroundColor: 'blue',
-            },
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
-            headerTitleAlign: 'center',
-          }}>
-          <Stack.Screen
-            name="Game List Section"
-            component={SectionListComponent}
-            options={{
-              title: 'Game List Section',
-            }}
-          />
-          <Stack.Screen
-            name="Game List Flat"
-            component={FlatListComponentWithScroll}
-            options={{
-              title: 'Game List Flat',
-              // eslint-disable-next-line react/no-unstable-nested-components
-              headerRight: () => (
-                <TouchableOpacity
-                  onPress={() => Alert.alert('This is info button')}>
-                  <Text style={styles.infoButtonConatainer}>Info</Text>
-                </TouchableOpacity>
-              ),
-            }}
-          />
-          <Stack.Screen name="Signup Screen" component={SignUpScreen} />
-          <Stack.Screen
-            name="Detail Screen"
-            component={GameDetailScreenComponent}
-            options={{title: 'Detail Screen'}}
-          />
-        </Stack.Navigator> */}
+
+        <StackNavigationComponent />
 
         {/* <BottomTabs /> */}
 
@@ -247,7 +255,7 @@ export default function App() {
 
         {/* <MaterialTabs /> */}
 
-        <TopTabComponent />
+        {/* <TopTabComponent /> */}
 
       </NavigationContainer>
     </>
