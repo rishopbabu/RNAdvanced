@@ -15,6 +15,11 @@ import ImagePicker from 'react-native-image-crop-picker';
 import {PERMISSIONS, check, RESULTS, requestMultiple, request} from 'react-native-permissions';
 import { name as appName } from './app.json';
 
+import { Provider } from 'react-redux';
+import store from './Redux/store';
+import ReduxComponent from './screens/ReduxComponent';
+
+
 // Define the list of permissions you want to request
 const permissionsToRequest = [
   PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION,
@@ -263,63 +268,63 @@ requestMultiple(permissionsToRequest).then((statuses) => {
 
 export default function App() {
 
-  const [selectedImage, setSelectedImage] = useState(null as any);
+  // const [selectedImage, setSelectedImage] = useState(null as any);
 
-  const openPicker = async () => {
-    console.log('openPicker')
-    try {
-      const image = await ImagePicker.openCamera({
-        width: 300,
-        height: 400,
-        cropping: true,
-      });
-      setSelectedImage(image);
-    } catch (error) {
-      console.log('Image picker error:', error);
-    }
-  };
+  // const openPicker = async () => {
+  //   console.log('openPicker')
+  //   try {
+  //     const image = await ImagePicker.openCamera({
+  //       width: 300,
+  //       height: 400,
+  //       cropping: true,
+  //     });
+  //     setSelectedImage(image);
+  //   } catch (error) {
+  //     console.log('Image picker error:', error);
+  //   }
+  // };
 
-  const [cameraPermissionStatus, setCameraPermissionStatus] = useState('');
+  // const [cameraPermissionStatus, setCameraPermissionStatus] = useState('');
 
-  useEffect(() => {
-    checkCameraPermission();
-  }, []);
+  // useEffect(() => {
+  //   checkCameraPermission();
+  // }, []);
 
-  const checkCameraPermission = async () => {
-    try {
-      const status = await check(PERMISSIONS.ANDROID.CAMERA);
-      setCameraPermissionStatus(status);
-    } catch (error) {
-      console.error('Error checking camera permission:', error);
-    }
-  };
+  // const checkCameraPermission = async () => {
+  //   try {
+  //     const status = await check(PERMISSIONS.ANDROID.CAMERA);
+  //     setCameraPermissionStatus(status);
+  //   } catch (error) {
+  //     console.error('Error checking camera permission:', error);
+  //   }
+  // };
 
-  const requestCameraPermission = async () => {
-    try {
-      const status = await request(PERMISSIONS.ANDROID.CAMERA);
-      setCameraPermissionStatus(status);
-    } catch (error) {
-      console.error('Error requesting camera permission:', error);
-    }
-  };
+  // const requestCameraPermission = async () => {
+  //   try {
+  //     const status = await request(PERMISSIONS.ANDROID.CAMERA);
+  //     setCameraPermissionStatus(status);
+  //   } catch (error) {
+  //     console.error('Error requesting camera permission:', error);
+  //   }
+  // };
 
-  const requestMicrophonePermission = async () => {
-    try {
-      const status = await request(PERMISSIONS.ANDROID.RECORD_AUDIO);
-      setCameraPermissionStatus(status);
-    } catch (error) {
-      console.error('Error requesting microphone permission:', error);
-    }
-  }
+  // const requestMicrophonePermission = async () => {
+  //   try {
+  //     const status = await request(PERMISSIONS.ANDROID.RECORD_AUDIO);
+  //     setCameraPermissionStatus(status);
+  //   } catch (error) {
+  //     console.error('Error requesting microphone permission:', error);
+  //   }
+  // }
 
-  const requestReadContactsPermission = async () => {
-    try {
-      const status = await request(PERMISSIONS.ANDROID.READ_CONTACTS);
-      setCameraPermissionStatus(status);
-    } catch (error) {
-      console.error('Error requesting microphone permission:', error);
-    }
-  }
+  // const requestReadContactsPermission = async () => {
+  //   try {
+  //     const status = await request(PERMISSIONS.ANDROID.READ_CONTACTS);
+  //     setCameraPermissionStatus(status);
+  //   } catch (error) {
+  //     console.error('Error requesting microphone permission:', error);
+  //   }
+  // }
 
   return (
     <>
@@ -342,7 +347,9 @@ export default function App() {
 
       {/* </NavigationContainer> */}
 
-    <View>
+      {/* Permissions */}
+
+    {/* <View>
       <Text>Camera Permission Status: {cameraPermissionStatus}</Text>
       {cameraPermissionStatus === RESULTS.GRANTED ? (
         <Text>Camera permission granted. You can use the camera.</Text>
@@ -362,7 +369,12 @@ export default function App() {
         <Button title="Request Read Contacts Permission" onPress={requestReadContactsPermission} />
       </View>
     
-    </View>
+    </View> */}
+
+      <Provider store={store}>
+        <ReduxComponent />
+      </Provider>
+
     </>
   );
 }
