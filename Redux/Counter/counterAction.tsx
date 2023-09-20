@@ -1,5 +1,3 @@
-
-
 import { INCREMENT_COUNTER, DECREMENT_COUNTER } from "./counterActionTypes";
 
 export const incrementCounterAction = (params: any) => {

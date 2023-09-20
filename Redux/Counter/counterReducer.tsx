@@ -1,6 +1,3 @@
-
-
-import { State } from "react-native-gesture-handler";
 import { INCREMENT_COUNTER, DECREMENT_COUNTER } from "./counterActionTypes";
 
 const initialState = {
