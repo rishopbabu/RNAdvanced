@@ -361,6 +361,10 @@ export default function App() {
       <View>
         <Button title="Request Read Contacts Permission" onPress={requestReadContactsPermission} />
       </View>
+
+      <View>
+        <Button title="Capture image" onPress={openPicker} />
+      </View>
     
     </View>
     </>
